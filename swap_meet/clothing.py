@@ -1,2 +1,3 @@
 class Clothing:
-    pass
+    def __init__(self,id,fabric):
+        
