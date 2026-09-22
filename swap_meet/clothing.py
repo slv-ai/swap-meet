@@ -1,9 +1,9 @@
 from swap_meet.item import Item
-import uuid
-class Clothing:
-    def __init__(self,id,fabric = "unknown"):
+
+class Clothing(Item):
+    def __init__(self,fabric = "unknown"):
         self.fabric = fabric
-        self.id = uuid.uuid4().int
+        
     def get_category(self):
         return self.__class__.__name__
     def __str__(self):
