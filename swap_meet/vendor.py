@@ -65,4 +65,16 @@ class Vendor:
             return False
         
         return self.swap_items(other_vendor,my_best_item,their_best_item)
-     
+
+    ## Below code by using swap_first_item ##
+    # def swap_best_by_category(self,other_vendor,my_priority,their_priority):
+    #     my_best_item = self.get_best_by_category(their_priority)
+    #     their_best_item = other_vendor.get_best_by_category(my_priority)
+    #     if not my_best_item or not their_best_item :
+    #         return False
+    #     self.inventory.remove(my_best_item)
+    #     self.inventory.insert(0,my_best_item)
+
+    #     other_vendor.inventory.remove(their_best_item)
+    #     other_vendor.inventory.insert(0,their_best_item)
+    #     return self.swap_first_item(other_vendor)
