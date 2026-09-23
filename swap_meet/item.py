@@ -12,7 +12,12 @@ class Item:
         return f"An object of type {self.get_category()} with id {self.id}."
     def condition_description(self):
         descriptions ={
-            0 : "mint",
-            1 : "like new"
+            0 : "poor",
+            1 : "heavily used",
+            2 : "used",
+            3 : "Gently used",
+            4 : "like new",
+            5 : "mint"
         }
+        return descriptions[self.condition]
     

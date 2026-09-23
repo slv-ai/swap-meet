@@ -1,7 +1,9 @@
+import uuid
 from swap_meet.item import Item
 class Electronics(Item):
-    def __init__(self,type="unknown"):
+    def __init__(self,id = None,type="Unknown",condition=0):
         self.type=type
+        super().__init__(id,condition)
     def get_category (self):
             return self.__class__.__name__
     def __str__(self):
