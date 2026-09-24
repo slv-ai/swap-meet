@@ -289,3 +289,14 @@ def test_swap_best_by_category_no_other_match_is_false():
     # - That result is falsy
     # - That tai and jesse's inventories are the correct length
     # - That all the correct items are in tai and jesse's inventories
+    #
+    #********* additional test cases       ************************
+def test_conditon_description():
+    #arrange
+    item = Decor(condition=2.5)
+
+    #act
+    description = item.condition_description()
+
+    #assert
+    assert description == "used"

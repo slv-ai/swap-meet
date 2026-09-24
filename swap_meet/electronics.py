@@ -11,5 +11,5 @@ class Electronics(Item):
     def __str__(self):
         type = super().__str__()
         return f"{type} This is a {self.type} device."
-       
+    
 
