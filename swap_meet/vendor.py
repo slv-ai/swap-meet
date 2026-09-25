@@ -1,3 +1,22 @@
+def my_max(collection,key):
+    if not collection:
+        return None
+    max_item = collection[0]
+    for item in collection:
+        if key(item) > key(max_item):
+            max_item = item
+    return max_item
+
+def my_min(collection,key):
+    if not collection:
+        return None
+    min_item = collection[0]
+    for item in collection:
+        if key(item) < key(min_item):
+            min_item = item
+    return min_item
+    
+
 class Vendor:
     def __init__(self,inventory = None):
         self.inventory = [] if inventory is None else inventory
@@ -22,9 +41,9 @@ class Vendor:
         if my_item not in self.inventory or their_item not in other_vendor.inventory:
             return False
         self.remove(my_item)
-        other_vendor.add(my_item)
-
         other_vendor.remove(their_item)
+
+        other_vendor.add(my_item)
         self.add(their_item)
         return True
 
@@ -52,6 +71,7 @@ class Vendor:
         category_items = self.get_by_category(category)
         if not category_items:
             return None
+        return my_max(category_items, key = lambda item :item.condition)
         best_condition = 0.0
         for item in category_items:
             if item.condition > best_condition:
@@ -80,3 +100,18 @@ class Vendor:
     #     other_vendor.inventory.remove(their_best_item)
     #     other_vendor.inventory.insert(0,their_best_item)
     #     return self.swap_first_item(other_vendor)
+
+    def swap_by_newest(self,other_vendor,my_priority):
+        """
+        swap the old item  with new item from other vendor
+        """
+        my_items = self.get_by_category(my_priority)
+        print(my_items)
+        vendor_items = other_vendor.get_by_category(my_priority)
+        print(vendor_items)
+        if not my_items or not vendor_items:
+            return False
+        my_item = my_max(my_items,key = lambda item : item.age)
+        vendor_item = my_min(vendor_items,key= lambda item : item.age)
+        return self.swap_items(other_vendor,my_item,vendor_item)
+

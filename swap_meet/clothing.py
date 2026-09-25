@@ -1,9 +1,9 @@
 from swap_meet.item import Item
 
 class Clothing(Item):
-    def __init__(self,id = None ,fabric = "Unknown",condition =0):
+    def __init__(self,id = None ,fabric = "Unknown",condition =0,age =0):
         self.fabric = fabric
-        super().__init__(id,condition)
+        super().__init__(id,condition,age)
         
     # def get_category(self):
     #     return self.__class__.__name__

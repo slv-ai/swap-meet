@@ -293,10 +293,36 @@ def test_swap_best_by_category_no_other_match_is_false():
     #********* additional test cases       ************************
 def test_conditon_description():
     #arrange
-    item = Decor(condition=2.5)
+    item = Decor(condition=5)
 
     #act
     description = item.condition_description()
 
     #assert
-    assert description == "used"
+    assert description == "mint"
+    # with pytest.raises(ValueError):
+    #     item.condition_description()
+
+def test_swap_based_on_age_by_swapping_one_item():
+    item_a = Decor(age=2)
+    item_b = Clothing(age=10)
+    item_c = Decor(age=4)
+    rebecca = Vendor(
+        inventory=[item_a,item_b,item_c]
+    )
+
+    item_d = Decor(age=5)
+    item_e = Decor(age=10)
+    item_f= Clothing(age=1)
+    jennie = Vendor(
+        inventory=[item_d,item_e,item_f]
+    )
+
+    result = rebecca.swap_by_newest(
+        other_vendor= jennie,
+        my_priority = "Clothing")
+    assert len(jennie.inventory) == 3
+    assert item_f in rebecca.inventory
+    assert item_f not in jennie.inventory
+    assert item_b in jennie.inventory
+
