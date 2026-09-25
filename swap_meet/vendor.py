@@ -106,12 +106,18 @@ class Vendor:
         swap the old item  with new item from other vendor
         """
         my_items = self.get_by_category(my_priority)
-        print(my_items)
+        print("my_items :" ,my_items)
+
         vendor_items = other_vendor.get_by_category(my_priority)
-        print(vendor_items)
+        print("vendor_items :",vendor_items)
+
         if not my_items or not vendor_items:
             return False
+        
         my_item = my_max(my_items,key = lambda item : item.age)
         vendor_item = my_min(vendor_items,key= lambda item : item.age)
+        print("my_item_to_swap : ", my_item)
+        print("vendor_item_to_swap :",vendor_item)
+
         return self.swap_items(other_vendor,my_item,vendor_item)
 
